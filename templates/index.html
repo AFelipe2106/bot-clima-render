@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Bot del Clima 🌤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial; text-align: center; background-color: #f0f0f0; padding: 20px; }
+        .card { background: white; padding: 20px; border-radius: 10px; max-width: 400px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        img { width: 100px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>{{ saludo }}</h2>
+        <h3>Bot del Clima 🌤️</h3>
+        <form method="post">
+            <input type="text" name="ciudad" placeholder="Ingresa tu ciudad" required>
+            <button type="submit">Consultar</button>
+        </form>
+        {% if clima_info %}
+            <h4>{{ clima_info.nombre_ciudad }}, {{ clima_info.pais }}</h4>
+            <img src="http://openweathermap.org/img/wn/{{ clima_info.icono }}@2x.png" alt="Icono clima">
+            <p>{{ clima_info.descripcion }}</p>
+            <p>🌡 Temperatura: {{ clima_info.temperatura }} °C</p>
+            <p>🔺 Máxima: {{ clima_info.temp_max }} °C</p>
+            <p>🔻 Mínima: {{ clima_info.temp_min }} °C</p>
+            <p>💧 Humedad: {{ clima_info.humedad }}%</p>
+            <p>💨 Viento: {{ clima_info.viento }} m/s</p>
+            <p>🌅 Salida del sol: {{ clima_info.salida_sol }} UTC</p>
+            <p>🌇 Puesta del sol: {{ clima_info.puesta_sol }} UTC</p>
+        {% endif %}
+    </div>
+</body>
+</html>
